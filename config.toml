@@ -1,0 +1,31 @@
+[model]
+timesfm_repo    = "google/timesfm-2.5-200m-pytorch"
+ollama_base_url = "http://localhost:11434"
+# ollama model is fixed to gemma4:e4b in code — do not add it here
+
+[timesfm]
+# context lengths in trading days
+macro_context_days  = 2520   # ~10 years
+mid_context_days    = 120
+micro_context_days  = 60
+
+# forecast horizons in trading days
+macro_horizon_days  = 60     # quarterly
+mid_horizon_days    = 20     # monthly
+micro_horizon_days  = 5      # weekly
+
+# quantile levels for uncertainty bands
+quantile_levels = [0.1, 0.5, 0.9]
+
+[data]
+market    = "KOSPI"
+cache_dir = ".cache/data"
+
+[scraping]
+naver_delay_sec = 1.0
+max_news_items  = 20
+request_timeout = 10
+
+[output]
+reports_dir = "reports"
+charts_dir  = "reports/charts"

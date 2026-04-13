@@ -1,0 +1,23 @@
+# Cache and data
+.cache/
+*.parquet
+
+# Reports (generated output)
+reports/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

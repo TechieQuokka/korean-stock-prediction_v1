@@ -1,0 +1,10 @@
+pykrx
+timesfm
+torch
+transformers
+plotly
+pandas
+numpy
+requests
+beautifulsoup4
+tomli
