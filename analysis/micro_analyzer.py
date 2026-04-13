@@ -33,7 +33,6 @@ class MicroAnalyzer:
         self,
         df: pd.DataFrame,
         forecast: Dict[str, Any],
-        scrape: Dict[str, Any] | None = None,
     ) -> str:
         lines = [
             "=== MICRO ANALYSIS (Short-Term / 1-Week Perspective) ===",
@@ -92,23 +91,6 @@ class MicroAnalyzer:
                 f"  ATR as %  : {atr_pct:.2f}% of current price",
                 "",
             ]
-
-        # --- Foreign / institution net buying ---
-        if scrape and scrape.get("net_buying"):
-            nb = scrape["net_buying"]
-            lines.append(f"[ Foreign / Institution Net Buying (as of {self._today}) ]")
-            for key, val in nb.items():
-                if key != "date":
-                    lines.append(f"  {key}: {val}")
-            lines.append("")
-
-        # --- Market index ---
-        if scrape and scrape.get("market_index"):
-            mi = scrape["market_index"]
-            lines.append(f"[ Market Index (as of {self._today}) ]")
-            if "KOSPI" in mi:
-                lines.append(f"  KOSPI: {mi['KOSPI']}  Change: {mi.get('KOSPI_change', 'N/A')}")
-            lines.append("")
 
         # --- TimesFM weekly forecast ---
         q50   = forecast["q50"]

@@ -31,7 +31,6 @@ class MacroAnalyzer:
         self,
         df: pd.DataFrame,
         forecast: Dict[str, Any],
-        news: Dict[str, Any] | None = None,
     ) -> str:
         """
         Returns a text block describing the macro perspective.
@@ -99,12 +98,5 @@ class MacroAnalyzer:
             f"  Expected Change: {((q50[-1] / forecast['last_close']) - 1) * 100:+.1f}%",
             "",
         ]
-
-        # --- Market news summary (macro-relevant) ---
-        if news and news.get("news"):
-            lines.append("[ Recent News Headlines (as of {}) ]".format(self._today))
-            for item in news["news"][:5]:
-                lines.append(f"  - {item['headline']} ({item.get('date', '')})")
-            lines.append("")
 
         return "\n".join(lines)
